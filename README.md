@@ -1,4 +1,5 @@
-Superstore Sales Dashboard
+# Superstore Sales Dashboard
+
 An interactive sales analytics dashboard built with Python, Streamlit, Pandas, and Plotly to explore retail sales performance, profitability, and regional trends.
 
 The dashboard transforms raw Superstore sales data into actionable business insights through interactive filters, KPI metrics, and visualizations.
