@@ -1,89 +1,135 @@
-# Superstore Sales Dashboard
+Superstore Sales Dashboard
+An interactive sales analytics dashboard built with Python, Streamlit, Pandas, and Plotly to explore retail sales performance, profitability, and regional trends.
 
-An interactive sales analytics dashboard built with **Streamlit**, **pandas** and **Plotly**. It lets you explore the classic Superstore retail dataset, track sales performance, profitability and regional trends, and slice the data on the fly with sidebar filters.
+The dashboard transforms raw Superstore sales data into actionable business insights through interactive filters, KPI metrics, and visualizations.
 
-<!-- Add a screenshot or GIF of the dashboard here, e.g.: -->
-<!-- ![Dashboard preview](screenshots/dashboard.png) -->
+Project Overview
+Retail businesses generate large amounts of sales data, but raw datasets can make it difficult to identify trends, evaluate profitability, and compare performance across product categories and regions.
 
-## Features
+This project addresses that challenge by providing an interactive dashboard where users can filter sales data and explore key business performance indicators.
 
-- **KPI cards**: Total Sales, Total Profit, Quantity Sold and Profit Margin (%), updated live as filters change.
-- **Sidebar filters**: Order date range, Category, Region and Segment.
-- **Monthly Sales Trend**: line chart of sales aggregated by month.
-- **Sales by Category**: bar chart comparing product categories.
-- **Profit by Sub-Category**: horizontal bar chart with a red-to-green colour scale, so loss-making sub-categories stand out.
-- **Sales Distribution by Region**: donut chart showing each region's share of sales.
-- **Filtered data explorer**: expandable table of the underlying records, with a record count and date span.
-- **Empty-state handling**: a warning is shown if the selected filters return no data.
+Dashboard Features
+1. Key Performance Indicators (KPIs)
+The dashboard provides an overview of business performance through:
 
-## Tech Stack
+Total Sales: Total revenue generated from orders.
+Total Profit: Overall profit from sales.
+Quantity Sold: Total units sold.
+Profit Margin: Profit expressed as a percentage of sales.
+2. Interactive Filters
+Users can filter the dashboard using sidebar controls:
 
-| Tool | Purpose |
-| --- | --- |
-| [Streamlit](https://streamlit.io/) | Web app framework and UI widgets |
-| [pandas](https://pandas.pydata.org/) | Data loading, cleaning and aggregation |
-| [Plotly Express](https://plotly.com/python/plotly-express/) | Interactive charts |
+Order date range
+Product category
+Sales region
+Customer segment
+The charts and KPI metrics update according to the selected filters.
 
-## Project Structure
+3. Data Visualizations
+The dashboard contains four main visualizations arranged in a two-column layout:
 
-```
-superstore-streamlit-dashboard/
-├── Superstore.csv      # Source dataset
-├── superstore.py       # Streamlit app
-└── requirements.txt    # Python dependencies
-```
+Monthly Sales Trend: Tracks sales performance over time to identify growth patterns and fluctuations.
+Sales by Category: Compares revenue across product categories.
+Profit by Sub-Category: Identifies product sub-categories contributing the most or least profit.
+Sales Distribution by Region: Compares sales performance across geographical regions.
+The charts are interactive and provide additional details when users hover over data points.
 
-## Getting Started
+4. Data Preparation
+The application uses Pandas to prepare the dataset for analysis, including:
 
-### Prerequisites
+Converting order dates into datetime format.
+Cleaning and converting numerical columns.
+Handling invalid date and numerical values.
+Grouping sales data for monthly and categorical analysis.
+Applying filters before calculating metrics and rendering charts.
+Technology Stack
+Technology	Purpose
+Python	Core programming language
+Streamlit	Interactive dashboard and web application
+Pandas	Data cleaning, transformation, and analysis
+Plotly Express	Interactive data visualizations
+Project Structure
+superstore-sales-dashboard/
+│
+├── app.py
+├── Superstore.csv
+├── requirements.txt
+└── README.md
+app.py — Contains the Streamlit application and dashboard logic.
+Superstore.csv — Dataset used for the analysis.
+requirements.txt — Lists the Python dependencies.
+README.md — Project documentation.
+Installation and Setup
+Prerequisites
+Ensure that Python 3.9 or later is installed on your computer.
 
-- Python 3.9 or newer
-- `pip`
+Step 1: Clone the repository
+git clone YOUR_GITHUB_REPOSITORY_URL
+cd superstore-sales-dashboard
+Replace YOUR_GITHUB_REPOSITORY_URL with your actual repository URL.
 
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/KinneryAnyanga/superstore-streamlit-dashboard.git
-cd superstore-streamlit-dashboard
-
-# 2. (Optional) create and activate a virtual environment
+Step 2: Create a virtual environment (recommended)
 python -m venv venv
-source venv/bin/activate        # macOS/Linux
-venv\Scripts\activate           # Windows
+Activate the environment.
 
-# 3. Install dependencies
+Windows:
+
+venv\Scripts\activate
+macOS/Linux:
+
+source venv/bin/activate
+Step 3: Install dependencies
 pip install -r requirements.txt
-```
+If you do not have a requirements.txt file yet, create one containing:
 
-### Run the app
+streamlit
+pandas
+plotly
+Step 4: Add the dataset
+Place Superstore.csv in the project root directory, alongside app.py.
 
-```bash
-streamlit run superstore.py
-```
+The application reads the CSV using Latin-1 encoding.
 
-Streamlit will open the dashboard in your browser, usually at `http://localhost:8501`.
+Step 5: Run the application
+streamlit run app.py
+Open the local URL displayed in your terminal, usually:
 
-## How It Works
+http://localhost:8501
 
-1. **Load and clean**: `Superstore.csv` is read (Latin-1 encoding), `Order Date` is parsed as a date, `Sales`, `Profit` and `Quantity` are coerced to numeric, and rows with missing values in those fields are dropped. The result is cached with `@st.cache_data` for fast reruns.
-2. **Filter**: the sidebar controls narrow the dataset by date, category, region and segment.
-3. **Summarise**: KPIs are calculated from the filtered data, then grouped by month, category, sub-category and region.
-4. **Visualise**: Plotly charts are rendered in a two-column layout, followed by the raw filtered table.
+Business Questions Explored
+This dashboard helps users investigate questions such as:
 
-## Dataset
+How do monthly sales change over time?
+Which product categories generate the highest revenue?
+Which sub-categories contribute the most to profitability?
+How does sales performance differ across regions?
+How do customer segments and date ranges affect overall performance?
+What happens to key business metrics when different filters are applied?
+Skills Demonstrated
+This project demonstrates practical skills in:
 
-The app uses the Superstore sales dataset (`Superstore.csv`), which contains order-level retail transactions including order dates, customer segments, product categories and sub-categories, regions, sales, quantity and profit.
+Data cleaning and preprocessing
+Exploratory data analysis (EDA)
+Business KPI calculation
+Time-series analysis
+Data aggregation and grouping
+Interactive dashboard development
+Data visualization using Plotly
+Building Python applications with Streamlit
+Future Improvements
+Potential extensions include:
 
-## Possible Improvements
+Adding sales and profit comparisons against previous periods.
+Introducing monthly growth and year-over-year performance metrics.
+Identifying loss-making products and categories.
+Adding downloadable filtered reports.
+Deploying the dashboard online for public access.
+Integrating a database to support larger datasets.
+Conclusion
+The Superstore Sales Dashboard demonstrates how Python-based analytics can turn raw retail data into an interactive business intelligence tool.
 
-- Add year-over-year comparisons and growth indicators to the KPI cards.
-- Add state/city-level geographic maps.
-- Add top customers and top products views.
-- Add a download button for the filtered data.
-- Deploy to Streamlit Community Cloud and link the live demo here.
+By combining data preparation, KPI reporting, and interactive visualizations, the project provides a foundation for exploring business performance and making data-informed decisions.
 
-## Author
-
-**Kinnery Anyanga**
-GitHub: [@KinneryAnyanga](https://github.com/KinneryAnyanga)
+Author: Kinnery Anyanga
+Organization: KeDataLab
+Focus: Data Analytics | Python | Business Intelligence | Dashboard Development
